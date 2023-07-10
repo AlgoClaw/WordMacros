@@ -1,4 +1,5 @@
 Sub Change_Quotes_to_Straight()
+
     Dim rg As Range
     Set rg = ActiveDocument.Range
     Options.AutoFormatAsYouTypeReplaceQuotes = False
@@ -10,4 +11,5 @@ Sub Change_Quotes_to_Straight()
         .Format = True
         .Execute Replace:=wdReplaceAll
     End With
+
 End Sub
