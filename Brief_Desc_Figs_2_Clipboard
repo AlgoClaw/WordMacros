@@ -1,0 +1,24 @@
+Sub Brief_Desc_Figs_2_Clipboard()
+    
+    Dim clip As New DataObject
+    Dim obj As New DataObject
+    
+    Set myrange = ActiveDocument.Range
+    With myrange.Find
+        .Text = "FIG. [0-9A-Z]{1,3} is a*."
+        .MatchWildcards = True
+        .Forward = True
+        .Execute
+        .ClearFormatting
+    End With
+    
+    obj.SetText myrange
+    obj.PutInClipboard
+    
+    Do While myrange.Find.Execute = True
+    clip.GetFromClipboard
+    obj.SetText clip.GetText + vbLf + myrange
+    obj.PutInClipboard
+    Loop
+    
+End Sub
