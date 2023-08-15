@@ -12,13 +12,12 @@ Sub Brief_Desc_Figs_2_Clipboard()
         .ClearFormatting
     End With
     
-    obj.SetText myrange
-    obj.PutInClipboard
+    obj.SetText myrange ' for first run through
     
     Do While myrange.Find.Execute = True
-    clip.GetFromClipboard
-    obj.SetText clip.GetText + vbLf + myrange
-    obj.PutInClipboard
+        obj.SetText obj.GetText + vbLf + myrange ' vbLf = newline
     Loop
+    
+    obj.PutInClipboard ' use clipboard only once
     
 End Sub
