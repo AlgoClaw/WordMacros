@@ -17,6 +17,6 @@ Sub Brief_Desc_Figs_2_Clipboard()
         obj.SetText obj.GetText + vbLf + myrange ' vbLf = newline
     Loop
     
-    obj.PutInClipboard ' use clipboard only once
+    obj.PutInClipboard
     
 End Sub
