@@ -1,6 +1,5 @@
 Sub Brief_Desc_Figs_2_Clipboard()
     
-    Dim clip As New DataObject
     Dim obj As New DataObject
     
     Set myrange = ActiveDocument.Range
@@ -8,8 +7,8 @@ Sub Brief_Desc_Figs_2_Clipboard()
         .Text = "FIG. [0-9A-Z]{1,4} is a*."
         .MatchWildcards = True
         .Forward = True
-        .Execute
         .ClearFormatting
+        .Execute
     End With
     
     obj.SetText myrange ' for first run through
