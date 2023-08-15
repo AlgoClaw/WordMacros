@@ -5,7 +5,7 @@ Sub Brief_Desc_Figs_2_Clipboard()
     
     Set myrange = ActiveDocument.Range
     With myrange.Find
-        .Text = "FIG. [0-9A-Z]{1,3} is a*."
+        .Text = "FIG. [0-9A-Z]{1,4} is a*."
         .MatchWildcards = True
         .Forward = True
         .Execute
