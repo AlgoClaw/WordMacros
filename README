@@ -1,0 +1,11 @@
+Enable Dependent VBA References
+  a.	Developer  > Visual Basic > Tools > References 
+    i.	Items already checked:
+      1.	Visual Basic For Applications
+      2.	Microsoft Outlook 16.0 Object Library
+      3.	OLE Automation
+      4.	Microsoft Office 16.0 Object Library
+    ii.	Existing Items to check:
+      1.	Microsoft Excel 16.0 Object Library
+    iii.	Items needing to be added (Browse… > "C:\Windows\System32\FM20.DLL")
+      1.	Microsoft Forms 2.0 Object Library
