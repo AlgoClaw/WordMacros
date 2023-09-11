@@ -1,6 +1,6 @@
 Sub Clean_Claim()
 
-' Delete text double brackets
+' Delete text between double brackets (and the double brackets)
 With Selection.Find
     .Text = "(\[)(\[)(*)(\])(\])"
     .Replacement.Text = ""
@@ -13,7 +13,6 @@ End With
 Dim oRng As Word.Range
 Set oRng = ActiveDocument.Range
   With oRng.Find
-    .MatchWildcards = True
     .Text = "*"
     .Replacement.Text = ""
     .MatchWildcards = True
@@ -34,24 +33,14 @@ Set oRng = ActiveDocument.Range
   End With
 
 ' Replace double space with single space (x3)
+For i = 1 To 3
 With Selection.Find
     .Text = "  "
     .Replacement.Text = " "
     .Wrap = wdFindContinue
     .Execute Replace:=wdReplaceAll
 End With
-With Selection.Find
-    .Text = "  "
-    .Replacement.Text = " "
-    .Wrap = wdFindContinue
-    .Execute Replace:=wdReplaceAll
-End With
-With Selection.Find
-    .Text = "  "
-    .Replacement.Text = " "
-    .Wrap = wdFindContinue
-    .Execute Replace:=wdReplaceAll
-End With
+Next i
 
 ' Replace space-period with period
 With Selection.Find
