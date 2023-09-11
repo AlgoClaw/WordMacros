@@ -9,6 +9,13 @@ With Selection.Find
 End With
 
 With Selection.Find
+    .Text = ", comprising"
+    .Replacement.Text = " comprising"
+    .Wrap = wdFindContinue
+    .Execute Replace:=wdReplaceAll
+End With
+
+With Selection.Find
     .Text = "comprising"
     .Replacement.Text = "that includes"
     .Wrap = wdFindContinue
@@ -38,7 +45,7 @@ End With
 
 With Selection.Find
     .Text = ":"
-    .Replacement.Text = ", "
+    .Replacement.Text = " "
     .Wrap = wdFindContinue
     .Execute Replace:=wdReplaceAll
 End With
