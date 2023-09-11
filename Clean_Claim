@@ -67,7 +67,7 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
-' Replace space-colon with olon
+' Replace space-colon with colon
 With Selection.Find
     .Text = " :"
     .Replacement.Text = ":"
@@ -75,7 +75,7 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
-' Replace Currently Amended with Previously Presented
+' Replace "Currently Amended" with "Previously Presented"
 With Selection.Find
     .Text = "Currently Amended"
     .Replacement.Text = "Previously Presented"
@@ -83,7 +83,7 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
-' Replace New with Previously Presented
+' Replace "New" with "Previously Presented"
 With Selection.Find
     .Text = "New"
     .Replacement.Text = "Previously Presented"
