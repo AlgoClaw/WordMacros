@@ -1,5 +1,6 @@
 Sub Clean_Claim()
 
+' Delete text double brackets
 With Selection.Find
     .Text = "(\[)(\[)(*)(\])(\])"
     .Replacement.Text = ""
@@ -8,16 +9,43 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
+' Delete text with strikethroughs
+Dim oRng As Word.Range
+Set oRng = ActiveDocument.Range
+  With oRng.Find
+    .MatchWildcards = True
+    .Text = "*"
+    .Replacement.Text = ""
+    .MatchWildcards = True
+    .Font.StrikeThrough = True
+    .Execute Replace:=wdReplaceAll
+  End With
+
+' Remove underlining from text
 Dim oRng As Word.Range
 Set oRng = ActiveDocument.Range
   With oRng.Find
     .Text = "*"
-    .Font.StrikeThrough = True
-    .Replacement.Text = ""
     .MatchWildcards = True
-    .Execute Replace:=wdReplaceAll
+    .Font.Underline = True
+    While .Execute
+      oRng.Font.Underline = wdUnderlineNone
+    Wend
   End With
-  
+
+' Replace double space with single space (x3)
+With Selection.Find
+    .Text = "  "
+    .Replacement.Text = " "
+    .Wrap = wdFindContinue
+    .Execute Replace:=wdReplaceAll
+End With
+With Selection.Find
+    .Text = "  "
+    .Replacement.Text = " "
+    .Wrap = wdFindContinue
+    .Execute Replace:=wdReplaceAll
+End With
 With Selection.Find
     .Text = "  "
     .Replacement.Text = " "
@@ -25,20 +53,7 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
-With Selection.Find
-    .Text = "  "
-    .Replacement.Text = " "
-    .Wrap = wdFindContinue
-    .Execute Replace:=wdReplaceAll
-End With
-
-With Selection.Find
-    .Text = "  "
-    .Replacement.Text = " "
-    .Wrap = wdFindContinue
-    .Execute Replace:=wdReplaceAll
-End With
-
+' Replace space-period with period
 With Selection.Find
     .Text = " ."
     .Replacement.Text = "."
@@ -47,6 +62,7 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
+' Replace space-comma with comma
 With Selection.Find
     .Text = " ,"
     .Replacement.Text = ","
@@ -54,6 +70,7 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
+' Replace space-semicolon with semicolon
 With Selection.Find
     .Text = " ;"
     .Replacement.Text = ";"
@@ -61,6 +78,7 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
+' Replace space-colon with olon
 With Selection.Find
     .Text = " :"
     .Replacement.Text = ":"
@@ -68,6 +86,7 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
+' Replace Currently Amended with Previously Presented
 With Selection.Find
     .Text = "Currently Amended"
     .Replacement.Text = "Previously Presented"
@@ -75,17 +94,12 @@ With Selection.Find
     .Execute Replace:=wdReplaceAll
 End With
 
+' Replace New with Previously Presented
 With Selection.Find
     .Text = "New"
     .Replacement.Text = "Previously Presented"
     .Wrap = wdFindContinue
     .Execute Replace:=wdReplaceAll
 End With
-
-Do While Selection.Find.Execute = True
-If Selection.Font.Underline Then
-Selection.Font.Underline = False
-End If
-Loop
 
 End Sub
