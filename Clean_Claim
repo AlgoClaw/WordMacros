@@ -21,14 +21,14 @@ Set oRng = ActiveDocument.Range
   End With
 
 ' Remove underlining from text
-Dim oRng As Word.Range
-Set oRng = ActiveDocument.Range
-  With oRng.Find
+Dim xRng As Word.Range
+Set xRng = ActiveDocument.Range
+  With xRng.Find
     .Text = "*"
     .MatchWildcards = True
     .Font.Underline = True
     While .Execute
-      oRng.Font.Underline = wdUnderlineNone
+      xRng.Font.Underline = wdUnderlineNone
     Wend
   End With
 
