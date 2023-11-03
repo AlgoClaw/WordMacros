@@ -1,5 +1,8 @@
 Sub Clean_Claim()
 
+' Accept Changes
+ActiveDocument.Revisions.AcceptAll
+
 ' Delete text between double brackets (and the double brackets)
 With Selection.Find
     .Text = "(\[)(\[)(*)(\])(\])"
@@ -87,6 +90,15 @@ End With
 With Selection.Find
     .Text = "New"
     .Replacement.Text = "Previously Presented"
+    .Wrap = wdFindContinue
+    .Execute Replace:=wdReplaceAll
+End With
+
+' Replace empty lines (delete repeated carriage returns)
+With Selection.Find
+    .Text = "^p^p"
+    .Replacement.Text = "^p"
+    .MatchWildcards = False
     .Wrap = wdFindContinue
     .Execute Replace:=wdReplaceAll
 End With
