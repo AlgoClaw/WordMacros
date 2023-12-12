@@ -1,0 +1,3 @@
+Sub Fancy_Numbers_2_Text()
+    ActiveDocument.Range.ListFormat.ConvertNumbersToText
+End Sub
